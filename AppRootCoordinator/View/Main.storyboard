@@ -15,7 +15,19 @@
                     <view key="view" contentMode="scaleToFill" id="xbr-88-pDA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TS-Ig-G0w">
+                                <rect key="frame" x="155" y="418" width="104" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="1" green="0.89411764709999997" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4TS-Ig-G0w" firstAttribute="centerX" secondItem="xbr-88-pDA" secondAttribute="centerX" id="U5O-ez-Ylf"/>
+                            <constraint firstItem="4TS-Ig-G0w" firstAttribute="centerY" secondItem="xbr-88-pDA" secondAttribute="centerY" id="dFQ-Sv-V9z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="r92-ed-kc6"/>
                     </view>
                     <navigationItem key="navigationItem" id="eJ4-iK-DWe"/>

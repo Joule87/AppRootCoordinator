@@ -15,7 +15,19 @@
                     <view key="view" contentMode="scaleToFill" id="A2a-vb-dxI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXy-il-ud9">
+                                <rect key="frame" x="134.5" y="418" width="145" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aXy-il-ud9" firstAttribute="centerX" secondItem="A2a-vb-dxI" secondAttribute="centerX" id="8hJ-Sq-cf9"/>
+                            <constraint firstItem="aXy-il-ud9" firstAttribute="centerY" secondItem="A2a-vb-dxI" secondAttribute="centerY" id="Qvv-Cd-WHu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tDQ-Zk-AQV"/>
                     </view>
                     <navigationItem key="navigationItem" id="BV1-3g-zqQ"/>

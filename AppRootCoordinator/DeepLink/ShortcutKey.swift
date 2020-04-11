@@ -9,6 +9,6 @@
 import Foundation
 
 enum ShortcutKey: String {
-    case activity = "com.myApp.activity"
-    case messages = "com.myApp.messages"
+    case activity = "com.AppRootCoordinator.activity"
+    case messages = "com.AppRootCoordinator.messages"
 }

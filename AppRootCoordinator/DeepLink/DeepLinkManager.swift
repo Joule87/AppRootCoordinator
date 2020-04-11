@@ -10,7 +10,7 @@ import UIKit
 
 class DeepLinkManager {
     static let shared = DeepLinkManager()
-    private var deepLinkType: DeepLinkType? {
+    var deepLinkType: DeepLinkType? {
         didSet {
             handleDeepLink()
         }
@@ -27,9 +27,13 @@ class DeepLinkManager {
     
     private func handleDeepLink() {
         guard let deepLinkType = deepLinkType else { return }
-        NavRouter.share.switchToMainScreen(deepLinkType: deepLinkType)
-        // reset the deepLinkType back no nil, so it will not be triggered more than once
-        self.deepLinkType = nil
+        if UserDefaults.standard.bool(forKey: Constants.LOGGED_IN) {
+            NavRouter.share.switchToMainScreen(deepLinkType: deepLinkType)
+            // reset the deepLinkType back no nil, so it will not be triggered more than once
+            self.deepLinkType = nil
+        } else {
+            NavRouter.share.showLoginScreen(with: .transitionCrossDissolve)
+        }
         
     }
 }

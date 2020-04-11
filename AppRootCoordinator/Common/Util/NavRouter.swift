@@ -40,9 +40,9 @@ class NavRouter {
         animate(with: animationOption)
     }
     
-    func switchToMainScreen(deepLinkType: DeepLinkType? = nil) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
+    func switchToMainScreen(deepLinkType: DeepLinkType? = DeepLinkManager.shared.deepLinkType) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
         self.currentRootViewController = mainViewController
         
         defer { animate(with: .transitionCrossDissolve) }
@@ -50,11 +50,13 @@ class NavRouter {
         guard let deepLinkType = deepLinkType else { return }
         switch deepLinkType {
         case .activity:
-            let activityViewController = ActivityViewController()
+            let taskStoryBoard = UIStoryboard(name: "Task", bundle: nil)
+            let activityViewController = taskStoryBoard.instantiateViewController(withIdentifier: "ActivityViewController") as! ActivityViewController
             activityViewController.modalPresentationStyle = .overCurrentContext
             mainViewController.pushViewController(activityViewController, animated: false)
         case .messages:
-            let messageViewController = MessagesViewController()
+            let messageStoryBoard = UIStoryboard(name: "Task", bundle: nil)
+            let messageViewController = messageStoryBoard.instantiateViewController(withIdentifier: "MessagesViewController") as! MessagesViewController
             messageViewController.modalPresentationStyle = .overCurrentContext
             mainViewController.pushViewController(messageViewController, animated: false)
         }
@@ -74,5 +76,5 @@ class NavRouter {
         transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         currentWindow.layer.add(transition, forKey: kCATransition)
     }
-      
+    
 }
