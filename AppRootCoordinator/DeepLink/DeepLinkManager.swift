@@ -10,22 +10,26 @@ import UIKit
 
 class DeepLinkManager {
     static let shared = DeepLinkManager()
-    private var deepLinkType: DeepLinkType?
+    private var deepLinkType: DeepLinkType? {
+        didSet {
+            handleDeepLink()
+        }
+    }
     
     private init() {}
     
     @discardableResult
     func handleShortcut(item: UIApplicationShortcutItem) -> Bool {
         deepLinkType = ShortcutParser.shared.handleShortcut(item)
-        print("shortcut was handled successfully \(deepLinkType != nil) ")
+        print("Shortcut was handled successfully \(deepLinkType != nil) ")
         return deepLinkType != nil
     }
     
-    // check existing deepLinkType and perform action
-    func checkDeepLink() {
-        NavRouter.share.deepLinkType = deepLinkType
-        print("NavRouter deepLinkType settled to \(deepLinkType) ")
-        // reset deepLinkType after handling
+    private func handleDeepLink() {
+        guard let deepLinkType = deepLinkType else { return }
+        NavRouter.share.switchToMainScreen(deepLinkType: deepLinkType)
+        // reset the deepLinkType back no nil, so it will not be triggered more than once
         self.deepLinkType = nil
+        
     }
 }
