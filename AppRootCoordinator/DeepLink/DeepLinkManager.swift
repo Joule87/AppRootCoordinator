@@ -32,6 +32,7 @@ class DeepLinkManager {
             // reset the deepLinkType back no nil, so it will not be triggered more than once
             self.deepLinkType = nil
         } else {
+            // Do not reset the deepLinkType back no nil here, because it will be use after used log in.
             NavRouter.share.showLoginScreen(with: .transitionCrossDissolve)
         }
         
