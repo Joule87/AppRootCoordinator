@@ -16,6 +16,12 @@ class NavRouter {
         }
     }
     
+    var deepLinkType: DeepLinkType? {
+        didSet {
+            handleDeepLink()
+        }
+    }
+    
     private let transitionsDuration: TimeInterval = 0.3
     private var currentWindow: UIWindow {
         return UIApplication.shared.keyWindow!
@@ -29,15 +35,6 @@ class NavRouter {
         let storyBoard = UIStoryboard(name: "Splash", bundle: nil)
         let splashViewController = storyBoard.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
         self.currentRootViewController = splashViewController
-    }
-    
-    private func createPushTransitionFromLeft() {
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        currentWindow.layer.add(transition, forKey: kCATransition)
     }
     
     func showLoginScreen(with animationOption: UIView.AnimationOptions) {
@@ -60,6 +57,39 @@ class NavRouter {
     
     private func animate(with option: UIView.AnimationOptions) {
         UIView.transition(with: currentWindow, duration: transitionsDuration, options: option, animations: {}, completion: nil)
+    }
+    
+    private func createPushTransitionFromLeft() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        currentWindow.layer.add(transition, forKey: kCATransition)
+    }
+    
+    private func handleDeepLink() {
+        guard let deepLinkType = deepLinkType else { return }
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
+        self.currentRootViewController = mainViewController
+        
+        
+        switch deepLinkType {
+        case .activity:
+            let activityViewController = ActivityViewController()
+            activityViewController.modalPresentationStyle = .overCurrentContext
+            mainViewController.pushViewController(activityViewController, animated: false)
+        case .messages:
+            let messageViewController = MessagesViewController()
+            messageViewController.modalPresentationStyle = .overCurrentContext
+            mainViewController.pushViewController(messageViewController, animated: false)
+        }
+        
+        // reset the deepLinkType back no nil, so it will not be triggered more than once
+        self.deepLinkType = nil
+        
     }
     
 }

@@ -15,12 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        ShortcutParser.shared.registerShortcuts()
         if #available(iOS 13.0, *) {} else {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = NavRouter.share.currentRootViewController
             window?.makeKeyAndVisible()
         }
         return true
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(DeepLinkManager.shared.handleShortcut(item: shortcutItem))
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        DeepLinkManager.shared.checkDeepLink()
     }
 
     // MARK: UISceneSession Lifecycle
