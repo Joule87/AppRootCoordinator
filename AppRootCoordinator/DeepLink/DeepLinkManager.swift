@@ -25,6 +25,17 @@ class DeepLinkManager {
         return deepLinkType != nil
     }
     
+    func setDeepLink(for value: String) {
+        switch value {
+        case ShortcutKey.activity.rawValue:
+            deepLinkType = .activity
+        case ShortcutKey.messages.rawValue:
+            deepLinkType = .messages
+        default:
+            break
+        }
+    }
+    
     private func handleDeepLink() {
         guard let deepLinkType = deepLinkType else { return }
         if UserDefaults.standard.bool(forKey: Constants.LOGGED_IN) {

@@ -51,8 +51,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     
+    ///Handling ShortCuts
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         completionHandler(DeepLinkManager.shared.handleShortcut(item: shortcutItem))
+    }
+    
+    ///Handling DeepLinks
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true), let host = urlComponents.host else { return }
+        
+        DeepLinkManager.shared.setDeepLink(for: host)
     }
     
     

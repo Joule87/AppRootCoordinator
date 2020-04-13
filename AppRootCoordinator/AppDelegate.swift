@@ -24,8 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    ///Handling ShortCuts
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         completionHandler(DeepLinkManager.shared.handleShortcut(item: shortcutItem))
+    }
+    
+    ///Handling DeepLinks
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard let host = url.host else { return false }
+        DeepLinkManager.shared.setDeepLink(for: host)
+        return true
     }
 
     // MARK: UISceneSession Lifecycle
