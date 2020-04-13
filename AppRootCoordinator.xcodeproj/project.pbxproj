@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F457652F24421D40002BEA47 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F457652E24421D40002BEA47 /* MessagesViewController.swift */; };
+		F49DFB0A2444DE3300F240B6 /* NavBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DFB092444DE3300F240B6 /* NavBuilder.swift */; };
+		F49DFB0C2444E72600F240B6 /* StoryBoardNaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DFB0B2444E72600F240B6 /* StoryBoardNaming.swift */; };
 		F4A81C552440C9110059900E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A81C542440C9110059900E /* AppDelegate.swift */; };
 		F4A81C572440C9110059900E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A81C562440C9110059900E /* SceneDelegate.swift */; };
 		F4A81C5C2440C9110059900E /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A81C5A2440C9110059900E /* Splash.storyboard */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		F457652E24421D40002BEA47 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		F49DFB092444DE3300F240B6 /* NavBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBuilder.swift; sourceTree = "<group>"; };
+		F49DFB0B2444E72600F240B6 /* StoryBoardNaming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardNaming.swift; sourceTree = "<group>"; };
 		F4A81C512440C9110059900E /* AppRootCoordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppRootCoordinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A81C542440C9110059900E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4A81C562440C9110059900E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 			children = (
 				F4A81C8B2440CA000059900E /* AppRootHelper.swift */,
 				F4A81C922440CB510059900E /* NavRouter.swift */,
+				F49DFB092444DE3300F240B6 /* NavBuilder.swift */,
+				F49DFB0B2444E72600F240B6 /* StoryBoardNaming.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -375,10 +381,12 @@
 				F4A81CA4244212DE0059900E /* ShortcutParser.swift in Sources */,
 				F4A81C8E2440CA000059900E /* SceneDelegate_Extension.swift in Sources */,
 				F4A81C552440C9110059900E /* AppDelegate.swift in Sources */,
+				F49DFB0A2444DE3300F240B6 /* NavBuilder.swift in Sources */,
 				F4A81C8D2440CA000059900E /* AppDelegate_Extension.swift in Sources */,
 				F4A81C572440C9110059900E /* SceneDelegate.swift in Sources */,
 				F4A81CA3244212DE0059900E /* DeepLinkManager.swift in Sources */,
 				F4A81C8C2440CA000059900E /* Constants.swift in Sources */,
+				F49DFB0C2444E72600F240B6 /* StoryBoardNaming.swift in Sources */,
 				F4A81CAA2442179B0059900E /* ActivityViewController.swift in Sources */,
 				F457652F24421D40002BEA47 /* MessagesViewController.swift in Sources */,
 				F4A81C9D2440E7120059900E /* MainViewController.swift in Sources */,

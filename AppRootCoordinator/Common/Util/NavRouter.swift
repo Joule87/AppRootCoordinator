@@ -15,7 +15,7 @@ class NavRouter {
             AppRootHelper.rootViewController = currentRootViewController
         }
     }
-    
+    private let navBuilder = NavBuilder()
     private var currentWindow: UIWindow {
         return UIApplication.shared.keyWindow!
     }
@@ -25,15 +25,11 @@ class NavRouter {
     }
     
     func setupSplashScreen() {
-        let storyBoard = UIStoryboard(name: "Splash", bundle: nil)
-        let splashViewController = storyBoard.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
-        self.currentRootViewController = splashViewController
+        self.currentRootViewController = navBuilder.getNavigation(for: .splash, viewControllerIdentifier: SplashViewController.identifier)
     }
     
     func showLoginScreen(with animationOption: UIView.AnimationOptions) {
-        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-        let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginNavigationController") as! UINavigationController
-        self.currentRootViewController = loginViewController
+        self.currentRootViewController = navBuilder.getNavigation(for: .login, viewControllerIdentifier: Constants.UINavigationControllerIdentifier.LOGIN)
         if animationOption.isEmpty {
             createPushTransitionFromLeft()
         }
@@ -41,24 +37,20 @@ class NavRouter {
     }
     
     func switchToMainScreen(deepLinkType: DeepLinkType? = DeepLinkManager.shared.deepLinkType) {
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
-        self.currentRootViewController = mainViewController
+        self.currentRootViewController = navBuilder.getNavigation(for: .main, viewControllerIdentifier: Constants.UINavigationControllerIdentifier.MAIN)
         
         defer { animate(with: .transitionCrossDissolve) }
         
         guard let deepLinkType = deepLinkType else { return }
         switch deepLinkType {
         case .activity:
-            let taskStoryBoard = UIStoryboard(name: "Task", bundle: nil)
-            let activityViewController = taskStoryBoard.instantiateViewController(withIdentifier: "ActivityViewController") as! ActivityViewController
+            let activityViewController = navBuilder.getNavigation(for: .task, viewControllerIdentifier: ActivityViewController.identifier)
             activityViewController.modalPresentationStyle = .overCurrentContext
-            mainViewController.pushViewController(activityViewController, animated: false)
+            (self.currentRootViewController as! UINavigationController).pushViewController(activityViewController, animated: false)
         case .messages:
-            let messageStoryBoard = UIStoryboard(name: "Task", bundle: nil)
-            let messageViewController = messageStoryBoard.instantiateViewController(withIdentifier: "MessagesViewController") as! MessagesViewController
+            let messageViewController = navBuilder.getNavigation(for: .task, viewControllerIdentifier: MessagesViewController.identifier)
             messageViewController.modalPresentationStyle = .overCurrentContext
-            mainViewController.pushViewController(messageViewController, animated: false)
+           (self.currentRootViewController as! UINavigationController).pushViewController(messageViewController, animated: false)
         }
         
     }

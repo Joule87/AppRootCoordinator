@@ -10,4 +10,9 @@ import Foundation
 
 struct Constants {
     static let LOGGED_IN = "LOGGED_IN"
+    
+    struct UINavigationControllerIdentifier {
+        static let LOGIN = "LoginNavigationController"
+        static let MAIN = "MainNavigationController"
+    }
 }

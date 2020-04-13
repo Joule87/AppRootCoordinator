@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    static let identifier = "LoginViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.gray

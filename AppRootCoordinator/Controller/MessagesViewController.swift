@@ -9,7 +9,9 @@
 import UIKit
 
 class MessagesViewController: UIViewController {
-
+    
+    static let identifier = "MessagesViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange

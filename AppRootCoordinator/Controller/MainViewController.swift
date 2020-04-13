@@ -10,6 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    static let identifier = "MainViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
@@ -27,9 +29,9 @@ class MainViewController: UIViewController {
         NavRouter.share.showLoginScreen(with: [])
     }
     
-    @objc func showActivityScreen(animated: Bool = true) {
-//        let activityViewController = ActivityViewController()
-//        navigationController?.pushViewController(activityViewController, animated: animated)
+    @objc func showActivityScreen() {
+        let activityViewController = NavBuilder().getNavigation(for: .task, viewControllerIdentifier: ActivityViewController.identifier)
+        navigationController?.pushViewController(activityViewController, animated: true)
     }
 
 }

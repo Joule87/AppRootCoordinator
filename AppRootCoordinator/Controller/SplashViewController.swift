@@ -10,6 +10,8 @@ import UIKit
 
 class SplashViewController: UIViewController {
     
+    static let identifier = "SplashViewController"
+    
     private let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
     
     override func viewDidLoad() {
